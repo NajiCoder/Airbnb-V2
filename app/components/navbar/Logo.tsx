@@ -8,6 +8,7 @@ export default function Logo() {
 
   return (
     <Image
+      onClick={() => router.push("/")}
       src="/images/airbnb-logo.png"
       alt="airbnb logo"
       width={100}

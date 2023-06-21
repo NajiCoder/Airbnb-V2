@@ -5,13 +5,14 @@ import Container from "../Container";
 import Logo from "./Logo";
 import Search from "./Search";
 import UserMenu from "./UserMenu";
+import Catagories from "./Catagories";
 
 interface NavbarProps {
   currentUser?: User | null;
 }
 
 export default function Navbar({ currentUser }: NavbarProps) {
-  console.log(currentUser);
+  console.log(`current user: ${currentUser?.name}`);
   return (
     <div className="fixed w-full bg-white z-10 shadow-sm">
       <div className="py-4 border-b-[1px] ">
@@ -23,6 +24,9 @@ export default function Navbar({ currentUser }: NavbarProps) {
           </div>
         </Container>
       </div>
+      <Container>
+        <Catagories />
+      </Container>
     </div>
   );
 }
