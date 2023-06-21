@@ -11,7 +11,7 @@ interface NavbarProps {
 }
 
 export default function Navbar({ currentUser }: NavbarProps) {
-  console.log(currentUser);
+  console.log(`current user: ${currentUser?.name}`);
   return (
     <div className="fixed w-full bg-white z-10 shadow-sm">
       <div className="py-4 border-b-[1px] ">
