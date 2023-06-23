@@ -1,15 +1,16 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { FieldValues, useForm } from "react-hook-form";
+import { FieldValues, set, useForm } from "react-hook-form";
 
 import Modal from "./Modal";
 import useRentModal from "@/app/hooks/useRentModal";
 
 import Heading from "../Heading";
-
 import { catagories } from "../navbar/Catagories";
 import CatogoryInput from "../inputs/CatogoryInput";
+import CountrySelect from "../inputs/CountrySelect";
+import dynamic from "next/dynamic";
 
 enum STEPS {
   CATAGORY = 0,
@@ -47,6 +48,13 @@ export default function RentModal() {
   });
 
   const catagory = watch("catagory"); // use watch to monitor catagory value change and update the form accordingly (e.g. show location input if catagory is selected)
+  const location = watch("location");
+
+  // we have to use useMemo to dynamically import the map component because (not sure yet but maybe "it uses the window object which is not available on the server")
+  const Map = useMemo(
+    () => dynamic(() => import("../Map"), { ssr: false }),
+    [location]
+  );
 
   function setCustomValue(id: string, value: any) {
     setValue(id, value, {
@@ -103,6 +111,22 @@ export default function RentModal() {
     </div>
   );
 
+  if (step === STEPS.LOCATION) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading
+          title="Where is your place located?"
+          subTitle="help guests find your place"
+        />
+        <CountrySelect
+          value={location}
+          onChange={(value) => setCustomValue("location", value)}
+        />
+        <Map center={location?.latlng} />
+      </div>
+    );
+  }
+
   return (
     <Modal
       isOpen={rentModal.isOpen}
@@ -111,7 +135,7 @@ export default function RentModal() {
       secondaryActionLabel={secondaryActionLabel}
       secondaryAction={step === STEPS.CATAGORY ? undefined : onBack}
       onClose={rentModal.onClose}
-      onSubmit={() => {}}
+      onSubmit={onNext}
       body={bodyContent}
       footer={<div>Footer</div>}
     />

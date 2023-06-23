@@ -1,8 +1,9 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback } from "react";
 import { IconType } from "react-icons/lib";
+import { useRouter, useSearchParams } from "next/navigation";
+
 import qs from "query-string";
 
 interface CatogoryBoxProps {

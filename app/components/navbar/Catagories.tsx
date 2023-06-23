@@ -1,5 +1,7 @@
 "use client";
 
+import { usePathname, useSearchParams } from "next/navigation";
+
 import { TbBeach, TbMountain, TbPool } from "react-icons/tb";
 import {
   GiBarn,
@@ -15,8 +17,8 @@ import { IoDiamond } from "react-icons/io5";
 import { BsSnow } from "react-icons/bs";
 import { FaSkiing } from "react-icons/fa";
 import { MdOutlineVilla } from "react-icons/md";
+
 import CatogoryBox from "../CatogoryBox";
-import { usePathname, useSearchParams } from "next/navigation";
 
 export const catagories = [
   {
