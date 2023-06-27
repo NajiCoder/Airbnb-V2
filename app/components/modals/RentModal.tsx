@@ -6,12 +6,14 @@ import { FieldValues, set, useForm } from "react-hook-form";
 import Modal from "./Modal";
 import useRentModal from "@/app/hooks/useRentModal";
 
+import dynamic from "next/dynamic";
+
 import Heading from "../Heading";
 import { catagories } from "../navbar/Catagories";
 import CatogoryInput from "../inputs/CatogoryInput";
 import CountrySelect from "../inputs/CountrySelect";
-import dynamic from "next/dynamic";
 import Counter from "../inputs/Counter";
+import ImageUpload from "../inputs/ImageUpload";
 
 enum STEPS {
   CATAGORY = 0,
@@ -158,6 +160,18 @@ export default function RentModal() {
           value={bathroomCount}
           onChange={(value) => setCustomValue("bathroomCount", value)}
         />
+      </div>
+    );
+  }
+
+  if (step === STEPS.IMAGES) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading
+          title="Add some photos of your place"
+          subTitle="Showcase your place to guests"
+        />
+        <ImageUpload />
       </div>
     );
   }
