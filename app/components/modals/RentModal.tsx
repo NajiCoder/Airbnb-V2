@@ -11,6 +11,7 @@ import { catagories } from "../navbar/Catagories";
 import CatogoryInput from "../inputs/CatogoryInput";
 import CountrySelect from "../inputs/CountrySelect";
 import dynamic from "next/dynamic";
+import Counter from "../inputs/Counter";
 
 enum STEPS {
   CATAGORY = 0,
@@ -49,6 +50,9 @@ export default function RentModal() {
 
   const catagory = watch("catagory"); // use watch to monitor catagory value change and update the form accordingly (e.g. show location input if catagory is selected)
   const location = watch("location");
+  const guestCount = watch("guestCount");
+  const roomCount = watch("roomCount");
+  const bathroomCount = watch("bathroomCount");
 
   // we have to use useMemo to dynamically import the map component because (not sure yet but maybe "it uses the window object which is not available on the server")
   const Map = useMemo(
@@ -123,6 +127,37 @@ export default function RentModal() {
           onChange={(value) => setCustomValue("location", value)}
         />
         <Map center={location?.latlng} />
+      </div>
+    );
+  }
+
+  if (step === STEPS.INFO) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading
+          title="Share some details about your place"
+          subTitle="What ameneties do you have"
+        />
+        <Counter
+          title="Guests"
+          subtitle="How many guests do you allow?"
+          value={guestCount}
+          onChange={(value) => setCustomValue("guestCount", value)}
+        />
+        <hr />
+        <Counter
+          title="Rooms"
+          subtitle="How many rooms do you have?"
+          value={roomCount}
+          onChange={(value) => setCustomValue("roomCount", value)}
+        />
+        <hr />
+        <Counter
+          title="Bathrooms"
+          subtitle="How many bathrooms do you have?"
+          value={bathroomCount}
+          onChange={(value) => setCustomValue("bathroomCount", value)}
+        />
       </div>
     );
   }
