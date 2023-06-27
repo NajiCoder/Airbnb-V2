@@ -55,6 +55,7 @@ export default function RentModal() {
   const guestCount = watch("guestCount");
   const roomCount = watch("roomCount");
   const bathroomCount = watch("bathroomCount");
+  const imageSrc = watch("imageSrc");
 
   // we have to use useMemo to dynamically import the map component because (not sure yet but maybe "it uses the window object which is not available on the server")
   const Map = useMemo(
@@ -171,7 +172,10 @@ export default function RentModal() {
           title="Add some photos of your place"
           subTitle="Showcase your place to guests"
         />
-        <ImageUpload />
+        <ImageUpload
+          value={imageSrc}
+          onChange={(value) => setCustomValue("imageSrc", value)}
+        />
       </div>
     );
   }
