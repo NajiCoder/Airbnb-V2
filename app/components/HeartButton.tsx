@@ -27,11 +27,11 @@ export default function HeartButton({
     >
       <AiOutlineHeart
         size={28}
-        className="absolute top-2 left-[180px] fill-white"
+        className="absolute top-2 left-[164px] fill-white"
       />
       <AiFillHeart
         size={28}
-        className={`absolute top-2 left-[180px] ${
+        className={`absolute top-2 left-[164px] ${
           hasFavorited ? "fill-rose-500" : "fill-neutral-500/70"
         }`}
       />
