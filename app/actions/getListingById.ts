@@ -22,6 +22,6 @@ export default async function getListingById(params: IParams) {
 
     return listing;
   } catch (error: any) {
-    throw new Error(`Error in getListingById: ${error}`);
+    throw new Error(error);
   }
 }
