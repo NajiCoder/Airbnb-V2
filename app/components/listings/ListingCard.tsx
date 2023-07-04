@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo } from "react";
+import { format } from "date-fns";
 
 import { Listing, Reservation, User } from "@prisma/client";
 
@@ -10,8 +11,6 @@ import useCountries from "@/app/hooks/useCountries";
 
 import Button from "../Button";
 import HeartButton from "../HeartButton";
-
-import { format } from "date-fns";
 
 interface ListingCardProps {
   data: Listing;
@@ -53,7 +52,7 @@ export default function ListingCard({
 
   const price = useMemo(() => {
     if (reservation) {
-      return `$${reservation.totalPrice}`;
+      return reservation.totalPrice;
     }
 
     return data.price;

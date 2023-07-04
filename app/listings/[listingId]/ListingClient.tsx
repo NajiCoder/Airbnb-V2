@@ -9,14 +9,14 @@ import { differenceInCalendarDays, eachDayOfInterval } from "date-fns";
 
 import { Listing, Reservation, User } from "@prisma/client";
 
+import useLoginModal from "@/app/hooks/useLoginModal";
+
 import Container from "@/app/components/Container";
 import { catagories } from "@/app/components/navbar/Catagories";
 
 import ListingHead from "@/app/components/listings/ListingHead";
 import ListingInfo from "@/app/components/listings/ListingInfo";
 import ListingReservation from "@/app/components/listings/ListingReservation";
-
-import useLoginModal from "@/app/hooks/useLoginModal";
 
 const initialDateRange = {
   startDate: new Date(),
@@ -76,8 +76,7 @@ export default function ListingClient({
       .then(() => {
         toast.success("Listing reserved");
         setDateRange(initialDateRange);
-        // redirect to "/trips" later
-        router.refresh();
+        router.push("/trips");
       })
       .catch(() => {
         toast.error("something went wrong with date reservation");

@@ -1,7 +1,8 @@
 "use client";
 
-import { User } from "@prisma/client";
 import Image from "next/image";
+
+import { User } from "@prisma/client";
 
 import useCountries from "@/app/hooks/useCountries";
 
@@ -40,9 +41,9 @@ export default function ListingHead({
           fill
           className="object-cover w-full"
         />
-      </div>
-      <div className="absolute top-[200px]">
-        <HeartButton listingId={id} currentUser={currentUser} />
+        <div className="absolute top-2 right-[250px]">
+          <HeartButton listingId={id} currentUser={currentUser} />
+        </div>
       </div>
     </>
   );
