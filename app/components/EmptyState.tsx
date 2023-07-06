@@ -7,7 +7,7 @@ import Button from "./Button";
 interface EmptyStateProps {
   title?: string;
   subtitle?: string;
-  showReset: boolean;
+  showReset?: boolean;
 }
 
 export default function EmptyState({

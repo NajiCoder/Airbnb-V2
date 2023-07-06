@@ -37,9 +37,9 @@ export default function ListingCard({
 
   const location = getByValue(data.locationValue); // we only stored the locationValue in the database, so we need to get the full location object from the countries hook
 
-  const handleCancel = useCallback(() => {
-    // learn more about React.MouseEvent<HTMLButtonElement> here: https://fettblog.eu/typescript-react/events/
+  const handleCancel = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
+      // learn more about React.MouseEvent<HTMLButtonElement> here: https://fettblog.eu/typescript-react/events/
       e.stopPropagation();
 
       if (disabled) {
@@ -47,8 +47,9 @@ export default function ListingCard({
       }
 
       onAction?.(actionId);
-    };
-  }, [disabled, onAction, actionId]);
+    },
+    [disabled, onAction, actionId]
+  );
 
   const price = useMemo(() => {
     if (reservation) {
