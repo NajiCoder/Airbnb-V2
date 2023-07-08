@@ -1,11 +1,11 @@
 import getReservations from "../actions/getReservations";
 import { getCurrentUser } from "../actions/getCurrentUser";
 
-import TripsClient from "./TripsClient";
-
 import EmptyState from "../components/EmptyState";
+import getListings from "../actions/getListings";
+import PropertiesCLient from "./PropertiesCLient";
 
-export default async function Trips() {
+export default async function PropertiesPage() {
   const currentUser = await getCurrentUser();
 
   if (!currentUser) {
@@ -13,21 +13,20 @@ export default async function Trips() {
       <EmptyState
         title="Unauthorized"
         subtitle="You must be signed in to view this page"
-        showReset
       />
     );
   }
 
-  const reservations = await getReservations({ userId: currentUser.id });
+  const listings = await getListings({ userId: currentUser.id });
 
-  if (reservations.length === 0) {
+  if (listings.length === 0) {
     return (
       <EmptyState
-        title="No reservations"
-        subtitle="Looks like you haven't made any reservations"
+        title="No properties found"
+        subtitle="Looks like you haven't added any properties yet"
       />
     );
   }
 
-  return <TripsClient reservations={reservations} currentUser={currentUser} />;
+  return <PropertiesCLient listings={listings} currentUser={currentUser} />;
 }
