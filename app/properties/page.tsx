@@ -1,4 +1,5 @@
-import getReservations from "../actions/getReservations";
+export const dynamic = "force-dynamic";
+
 import { getCurrentUser } from "../actions/getCurrentUser";
 
 import EmptyState from "../components/EmptyState";

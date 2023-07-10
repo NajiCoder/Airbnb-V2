@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { getCurrentUser } from "../actions/getCurrentUser";
 import getFavoritelistings from "../actions/getFavoritelistings";
 import EmptyState from "../components/EmptyState";

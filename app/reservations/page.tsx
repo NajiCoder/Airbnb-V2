@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import ReservationsClient from "./ReservationsClient";
 
 import getReservations from "../actions/getReservations";
