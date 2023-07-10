@@ -1,20 +1,22 @@
 "use client";
 
 import axios from "axios";
-import { AiFillGithub } from "react-icons/ai";
+
+import { toast } from "react-hot-toast";
+import { signIn } from "next-auth/react";
 import { FcGoogle } from "react-icons/fc";
+import { AiFillGithub } from "react-icons/ai";
 import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { toast } from "react-hot-toast";
 
 import Modal from "./Modal";
+
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
 
+import Button from "../Button";
 import Heading from "../Heading";
 import Input from "../inputs/Input";
-import Button from "../Button";
-import { signIn } from "next-auth/react";
 
 export default function RegisterModal() {
   const registerModal = useRegisterModal();

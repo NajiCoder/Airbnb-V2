@@ -1,7 +1,7 @@
 "use client";
 
-import { UseFormRegister, FieldValues, FieldErrors } from "react-hook-form";
 import { BiLira } from "react-icons/bi";
+import { UseFormRegister, FieldValues, FieldErrors } from "react-hook-form";
 
 interface InputProps {
   id: string;

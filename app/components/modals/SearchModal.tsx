@@ -9,6 +9,7 @@ import { useState, useMemo, useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import Modal from "./Modal";
+
 import useSearchModal from "@/app/hooks/useSearchModal";
 
 import Heading from "../Heading";
